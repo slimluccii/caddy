@@ -1,11 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^Dockerfile$/"],
+      "matchStrings": ["--with (?<depName>github\\.com/[^/@\\s]+/[^/@\\s]+)(?:/\\S+)?@(?<currentValue>v\\S+)"],
+      "datasourceTemplate": "go"
+    }
+  ],
   "packageRules": [
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["caddy"],
       "groupName": "caddy"
+    },
+    {
+      "matchDatasources": ["go"],
+      "matchPackageNames": ["github.com/hslatman/caddy-crowdsec-bouncer"],
+      "groupName": "caddy-crowdsec-bouncer"
     },
     {
       "matchUpdateTypes": ["minor", "patch", "digest"],
