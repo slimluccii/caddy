@@ -1,9 +1,9 @@
 FROM caddy:2.11.7-builder AS builder
 
 RUN xcaddy build \
-    --with github.com/mholt/caddy-l4 \
-    --with github.com/hslatman/caddy-crowdsec-bouncer/http \
-    --with github.com/hslatman/caddy-crowdsec-bouncer/layer4
+    --with github.com/mholt/caddy-l4@v0.1.2 \
+    --with github.com/hslatman/caddy-crowdsec-bouncer/http@v0.15.0 \
+    --with github.com/hslatman/caddy-crowdsec-bouncer/layer4@v0.15.0
 
 FROM caddy:2.11.7
 
